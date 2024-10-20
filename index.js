@@ -62,6 +62,12 @@ async function refreshAccessToken() {
     }
 }
 
+// make testing rout    
+app.get('/test', ensureValidToken, (req, res) => {
+    res.send('Hello, World!! It\'s me Soni')
+    });
+
+
 // Route to start authorization flow
 app.get('/auth', (req, res) => {
     const authUrl = oAuth2Client.generateAuthUrl({
