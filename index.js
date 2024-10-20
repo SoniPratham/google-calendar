@@ -94,13 +94,13 @@ app.get('/auth/callback', async (req, res) => {
     
     watchCalendar(); // Start watching calendar events when server starts
 
-    res.send('Authorization successful! You can close this tab.');
+    res.send('Authorization successful! You can call google all events api.');
 });
 
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
 
 // Fetch all events from Google Calendar and save them to MongoDB
-app.post('/google/get', ensureValidToken, async (req, res) => {
+app.post('/google/all/events', ensureValidToken, async (req, res) => {
     calendar.events.list({
         calendarId: 'primary',
         singleEvents: true,
